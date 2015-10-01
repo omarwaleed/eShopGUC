@@ -18,8 +18,10 @@
 	} 
 	// echo "Connected successfully";
 	?>
-
-	
+	<div>
+		<img src="logo.png" width="300">
+		<form action="signup.php" method="GET"><input type="Submit" value="Sign Up"></form>
+	</div>
 
 
 </body>
