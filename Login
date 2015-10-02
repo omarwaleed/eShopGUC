@@ -44,7 +44,7 @@ if(count($_COOKIE) > 0) {
 <?php 
 if(isset($_POST['submit']))
 	{
-		SignIn();
+		login();
 	}
 ?>
 
