@@ -12,7 +12,7 @@ session_start();
 	{
 		// database connecting
 		$servername = "localhost";
-		$username = "omar";
+		$username = "root";
 		$password = "";
 		$dbname = "omar";
 		// Create connection
@@ -46,7 +46,7 @@ session_start();
 
 				$conn->close();
 
-				header("Location: http://localhost/index.php"); /* Redirect browser */
+				header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
 				exit();
 			}
 			else
