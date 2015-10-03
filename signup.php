@@ -1,8 +1,8 @@
 <?php 
 if (session_status() == PHP_SESSION_NONE) 
-	{
-		session_start();
-	}
+{
+	session_start();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,52 +26,57 @@ if (session_status() == PHP_SESSION_NONE)
 		} 
 
 
-		if ($_POST['pass'] == $_POST['pass2']) 
-		{
-			// checks if the 2 passwords are equal first
-			// if so checks if the other fields are not empty
-			// if so register the user
-			if ($_POST['first_name'] != nil && $_POST['last_name'] != nil && $_POST['email'] != nil && $_POST['pass'] != nil) 
+		// if ($_POST['pass'] == $_POST['pass2']) 
+		// {
+		// 	// checks if the 2 passwords are equal first
+		// 	// if so checks if the other fields are not empty
+		// 	// if so register the user
+		// 	if ($_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['pass'] != null && $_POST['current'] != "signup") 
+		// 	{
+		$_POST['current'] = "signup";
+		$user_email = $_POST['email'];
+		$find_user = "SELECT email FROM users WHERE email ILIKE $user_email";
+		// $result = mysql_query($find_user);
+		// $rowcount=mysqli_num_rows($result);
+		// if ($rowcount > 0) 
+		// {
+		// 	$_SESSION['alert'] = "User with the same email exist";
+		// }
+		// else
+		// {
+			$fname = $_POST['first_name'];
+			$lname = $_POST['last_name'];
+			$email = $_POST['email'];
+			$pass = $_POST['pass'];
+
+			$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."')";
+
+			$retval = mysqli_query( $conn, $sql );
+
+			if(! $retval )
 			{
-				$user_email = $_POST['email'];
-				$find_user = "SELECT email FROM users WHERE email ILIKE $user_email";
-				$result = mysql_query($find_user);
-				$rowcount=mysqli_num_rows($result);
-				if ($rowcount > 0) 
-				{
-					$_SESSION['alert'] = "User with the same email exist";
-				}
-				else
-				{
-					$fname = $_POST['first_name'];
-					$lname = $_POST['last_name'];
-					$email = $_POST['email'];
-					$pass = $_POST['pass'];
-
-					$sql = "INSERT INTO users (first_name, last_name, email, password) 
-					VALUES ($fname, $lname, $email, $pass)";
-
-					if ($conn->query($sql) === TRUE ) {
-						$_SESSION['alert'] = "User created successfully";
-					} else {
-						echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-
-					$conn->close();
-
-					header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
-					exit();
-				}
+				die('Could not enter data: ' . mysqli_error($conn));
 			}
-			else
-			{
-				$_SESSION['alert'] = "You left a field empty";
-			}
-		}
-		else
-		{
-			$_SESSION['alert'] = "Passwords dont match";
-		}
+
+			echo "Entered data successfully\n";
+
+			mysql_close($conn);
+
+			// $conn->close();
+
+			header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+			exit();
+		// }
+		// 	}
+		// 	else
+		// 	{
+		// 		$_SESSION['alert'] = "You left a field empty";
+		// 	}
+		// }
+		// else
+		// {
+		// 	$_SESSION['alert'] = "Passwords dont match";
+		// }
 	}
 	?>
 
@@ -79,6 +84,7 @@ if (session_status() == PHP_SESSION_NONE)
 	if (isset($_SESSION['alert']))
 	{
 		echo $_SESSION['alert'];
+		// session_unset();
 	}
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		register();
