@@ -26,57 +26,63 @@ if (session_status() == PHP_SESSION_NONE)
 		} 
 
 
-		// if ($_POST['pass'] == $_POST['pass2']) 
-		// {
-		// 	// checks if the 2 passwords are equal first
-		// 	// if so checks if the other fields are not empty
-		// 	// if so register the user
-		// 	if ($_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['pass'] != null && $_POST['current'] != "signup") 
-		// 	{
-		$_POST['current'] = "signup";
-		$user_email = $_POST['email'];
-		$find_user = "SELECT email FROM users WHERE email ILIKE $user_email";
-		// $result = mysql_query($find_user);
-		// $rowcount=mysqli_num_rows($result);
-		// if ($rowcount > 0) 
-		// {
-		// 	$_SESSION['alert'] = "User with the same email exist";
-		// }
-		// else
-		// {
-			$fname = $_POST['first_name'];
-			$lname = $_POST['last_name'];
-			$email = $_POST['email'];
-			$pass = $_POST['pass'];
-
-			$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."')";
-
-			$retval = mysqli_query( $conn, $sql );
-
-			if(! $retval )
+		if ($_POST['pass'] == $_POST['pass2']) 
+		{
+			// checks if the 2 passwords are equal first
+			// if so checks if the other fields are not empty
+			// if so register the user
+			if ($_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['pass'] != null) 
 			{
-				die('Could not enter data: ' . mysqli_error($conn));
+				$_POST['current'] = "signup";
+				$user_email = $_POST['email'];
+				$find_user = "SELECT * FROM users WHERE email LIKE '".$user_email."'";
+				$result = mysqli_query($conn, $find_user);
+
+				if(! $result )
+					{
+						die('Error: ' . mysqli_error($conn));
+					}
+
+				$rowcount=mysqli_num_rows(mysqli_query($conn ,$find_user));
+				if ($rowcount > 0) 
+				{
+					$_SESSION['alert'] = "User with the same email exist";
+				}
+				else
+				{
+					$fname = $_POST['first_name'];
+					$lname = $_POST['last_name'];
+					$email = $_POST['email'];
+					$pass = $_POST['pass'];
+
+					$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."')";
+
+					$retval = mysqli_query( $conn, $sql );
+
+					if(! $retval )
+					{
+						die('Could not enter data: ' . mysqli_error($conn));
+					}
+
+					echo "Entered data successfully\n";
+
+					// mysqli_close($conn);
+
+					header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+					exit();
+				}
 			}
+			else
+			{
+				$_SESSION['alert'] = "You left a field empty";
+			}
+		}
+		else
+		{
+			$_SESSION['alert'] = "Passwords dont match";
+		}
 
-			echo "Entered data successfully\n";
-
-			mysql_close($conn);
-
-			// $conn->close();
-
-			header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
-			exit();
-		// }
-		// 	}
-		// 	else
-		// 	{
-		// 		$_SESSION['alert'] = "You left a field empty";
-		// 	}
-		// }
-		// else
-		// {
-		// 	$_SESSION['alert'] = "Passwords dont match";
-		// }
+		mysqli_close($conn);
 	}
 	?>
 
