@@ -1,5 +1,8 @@
-<?php
-session_start();
+<?php 
+if (session_status() == PHP_SESSION_NONE) 
+{
+	session_start();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +15,7 @@ session_start();
 	{
 		// database connecting
 		$servername = "localhost";
-		$username = "omar";
+		$username = "root";
 		$password = "";
 		$dbname = "omar";
 		// Create connection
@@ -28,26 +31,46 @@ session_start();
 			// checks if the 2 passwords are equal first
 			// if so checks if the other fields are not empty
 			// if so register the user
-			if ($_POST['first_name'] != "" && $_POST['last_name'] != "" && $_POST['email'] != "" && $_POST['pass'] != "") 
+			if ($_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['pass'] != null) 
 			{
-				$fname = $_POST['first_name'];
-				$lname = $_POST['last_name'];
-				$email = $_POST['email'];
-				$pass = $_POST['pass'];
-				
-				$sql = "INSERT INTO users (first_name, last_name, email, password) 
-							VALUES ($fname, $lname, $email, $pass)";
+				$_POST['current'] = "signup";
+				$user_email = $_POST['email'];
+				$find_user = "SELECT * FROM users WHERE email LIKE '".$user_email."'";
+				$result = mysqli_query($conn, $find_user);
 
-				if ($conn->query($sql) === TRUE) {
-					$_SESSION['alert'] = "User created successfully";
-				} else {
-					echo "Error: " . $sql . "<br>" . $conn->error;
+				if(! $result )
+					{
+						die('Error: ' . mysqli_error($conn));
+					}
+
+				$rowcount=mysqli_num_rows(mysqli_query($conn ,$find_user));
+				if ($rowcount > 0) 
+				{
+					$_SESSION['alert'] = "User with the same email exist";
 				}
+				else
+				{
+					$fname = $_POST['first_name'];
+					$lname = $_POST['last_name'];
+					$email = $_POST['email'];
+					$pass = $_POST['pass'];
 
-				$conn->close();
+					$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."')";
 
-				header("Location: http://localhost/index.php"); /* Redirect browser */
-				exit();
+					$retval = mysqli_query( $conn, $sql );
+
+					if(! $retval )
+					{
+						die('Could not enter data: ' . mysqli_error($conn));
+					}
+
+					echo "Entered data successfully\n";
+
+					// mysqli_close($conn);
+
+					header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+					exit();
+				}
 			}
 			else
 			{
@@ -58,17 +81,20 @@ session_start();
 		{
 			$_SESSION['alert'] = "Passwords dont match";
 		}
+
+		mysqli_close($conn);
 	}
 	?>
 
 	<?php 
-		if (isset($_SESSION['alert']))
-			{
-				echo $_SESSION['alert'];
-			}
-		if ($_SERVER['REQUEST_METHOD']=='POST') {
-			register();
-		}
+	if (isset($_SESSION['alert']))
+	{
+		echo $_SESSION['alert'];
+		// session_unset();
+	}
+	if ($_SERVER['REQUEST_METHOD']=='POST') {
+		register();
+	}
 	?>
 
 	<form action="signup.php" method="POST">
