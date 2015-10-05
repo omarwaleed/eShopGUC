@@ -3,58 +3,55 @@
 $servernamer = "localhost";
 $usernamer = "root";
 $passwordr = "";
-$DB_NAME = "omar";
-
- $conn_str = mysql_connect('localhost', 'root', '');
+$DB_NAME = "karim";
+$conn_str = mysql_connect('localhost', 'root', '');
+  
   if (!$conn_str) {
     die('Not connected  to the database: ' . mysql_error());
   }
 
-  $db_selected = mysql_select_db('omar', $conn_str);
+$db_selected = mysql_select_db('karim', $conn_str);
+  
   if (!$db_selected) {
     die ("Can\'t use your_database_name : " . mysql_error());
   }
 
 function login()
 {
-session_start();
-if(!empty($_POST['email'])){
-
-$query = mysql_query("SELECT * FROM users where Email = '$_POST[email]' AND PasswordX = '$_POST[password]'") or die(mysql_error()); 
-$row = mysql_fetch_array($query) or die(mysql_error());
-if(!empty($row['Email'] )AND !empty($row['PasswordX'])) {
-
- $_SESSION['Email'] = $row['PasswordX'];
- echo "SUCCESSFULLY LOGIN TO USER PROFILE PAGE..."; 
-
-
-} else {
-
-echo '<script language="javascript">';
-echo 'alert("user not found... try again")';
-echo '</script>';
-
- }
+		session_start();
+	if(!empty($_POST['email']) && !empty($_POST['password'])){
+		$query = mysql_query("SELECT * FROM users where Email = '$_POST[email]' AND
+		PasswordX = '$_POST[password]'") or die(mysql_error()); 
+		$row = mysql_fetch_array($query) or die(mysql_error());
+			if(!empty($row['Email'] )AND !empty($row['PasswordX'])) {
+				$_SESSION['Email'] = $row['PasswordX'];
+				$user=$row['First_Name'];
+ 			if (isset($_POST['rememberme'])) {
+				$cookie_name = "username";
+				$cookie_value = $user;
+				setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
 }
- 
- }
-if(isset($_POST['submit']))
+}
+}
+}
+
+	if(isset($_POST['submit']))
 {
-	login();
+		login();
 }
 ?>
-
 
 <!DOCTYPE HTML> 
 <html> 
 <head> 
 <title>Log-In</title> 
 </head> 
- <div id="Sign-In"> 
+<div id="Sign-In"> 
 <legend>LOG-IN</legend> 
 <form method="POST" action="Login.php"> 
 Email <br><input type="text" name="email" size="40"><br> 
 Password <br><input type="password" name="password" size="40"><br> 
+ Remember Me: <input type="checkbox" name="rememberme" value="1"><br>
 <input id="button" type="submit" name="submit" value="Log-In"> 
 </form> 
 </div> 
