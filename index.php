@@ -41,9 +41,10 @@
 
 			/* fetch associative array */
 			while ($row = $result->fetch_assoc()) {
-				echo $row["first_name"];
-				echo $row["email"];
-				echo $row["avatar"];
+				echo $row["first_name"]."<br>";
+				echo $row["email"]."<br>";
+				$image = $row["avatar"];
+				echo "<img src='$image' >";
 			}
 		}
 	}
