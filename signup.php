@@ -39,9 +39,9 @@ if (session_status() == PHP_SESSION_NONE)
 				$result = mysqli_query($conn, $find_user);
 
 				if(! $result )
-					{
-						die('Error: ' . mysqli_error($conn));
-					}
+				{
+					die('Error: ' . mysqli_error($conn));
+				}
 
 				$rowcount=mysqli_num_rows(mysqli_query($conn ,$find_user));
 				if ($rowcount > 0) 
@@ -50,12 +50,33 @@ if (session_status() == PHP_SESSION_NONE)
 				}
 				else
 				{
+
+					$uploadDir = './images/'; //Image Upload Folder
+					$fileName = $_FILES['avatar']['name'];
+					$tmpName  = $_FILES['avatar']['tmp_name'];
+					$fileSize = $_FILES['avatar']['size'];
+					$fileType = $_FILES['avatar']['type'];
+					$filePath = $uploadDir . $fileName;
+					$result = move_uploaded_file($tmpName, $filePath);
+					if (!$result) {
+						echo "Error uploading file";
+						exit;
+					}
+					if(!get_magic_quotes_gpc())
+					{
+						$fileName = addslashes($fileName);
+						$filePath = addslashes($filePath);
+					}
+
+
 					$fname = $_POST['first_name'];
 					$lname = $_POST['last_name'];
 					$email = $_POST['email'];
 					$pass = $_POST['pass'];
+					$avatar = $_FILES['avatar'];
 
-					$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."')";
+					// $sql = "INSERT INTO users (first_name, last_name, email, password, avatar) VALUES ('".$fname."', '".$lname."', '".$email."', '".$pass."', '".$avatar."')";
+					$sql = "INSERT INTO users (first_name, last_name, email, password, avatar) VALUES ('$fname', '$lname', '$email', '$pass', '$filePath')";
 
 					$retval = mysqli_query( $conn, $sql );
 
@@ -68,8 +89,10 @@ if (session_status() == PHP_SESSION_NONE)
 
 					// mysqli_close($conn);
 
-					header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
-					exit();
+					$_SESSION['email'] = $email;
+
+						header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+						exit();
 				}
 			}
 			else
@@ -90,17 +113,19 @@ if (session_status() == PHP_SESSION_NONE)
 	if (isset($_SESSION['alert']))
 	{
 		echo $_SESSION['alert'];
-		// session_unset();
+		session_unset();
 	}
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		register();
 	}
 	?>
 
-	<form action="signup.php" method="POST">
+	<form action="signup.php" method="POST" enctype="multipart/form-data">
 		First Name: <input type="text" name="first_name"><br>
 		Last Name: <input type="text" name="last_name"><br>
 		Email: <input type="text" name="email"><br>
+		Avatar: <input type="file" name="avatar" size="200000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26"><br>
+		<!-- size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26" -->
 		Password: <input type="text" name="pass"><br>
 		Repeat Password: <input type="text" name="pass2"><br>
 		<input type="submit" value="Submit">
