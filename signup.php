@@ -124,7 +124,7 @@ if (session_status() == PHP_SESSION_NONE)
 		First Name: <input type="text" name="first_name"><br>
 		Last Name: <input type="text" name="last_name"><br>
 		Email: <input type="text" name="email"><br>
-		Avatar: <input type="file" name="avatar"><br>
+		Avatar: <input type="file" name="avatar" size="200000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26"><br>
 		<!-- size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26" -->
 		Password: <input type="text" name="pass"><br>
 		Repeat Password: <input type="text" name="pass2"><br>

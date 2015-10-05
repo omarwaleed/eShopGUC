@@ -34,20 +34,22 @@
 	// {
 	// 	echo $_SESSION['alert'];
 	// }
-	if (isset($_SESSION['email'])) 
-	{
-		$new_user_email = $_SESSION['email'];
-		if ($result = mysqli_query($conn , "SELECT * FROM users WHERE email LIKE '$new_user_email'")) {
+
+	// display code here
+	// if (isset($_SESSION['email'])) 
+	// {
+	// 	$new_user_email = $_SESSION['email'];
+	// 	if ($result = mysqli_query($conn , "SELECT * FROM users WHERE email LIKE '$new_user_email'")) {
 
 			/* fetch associative array */
-			while ($row = $result->fetch_assoc()) {
-				echo $row["first_name"]."<br>";
-				echo $row["email"]."<br>";
-				$image = $row["avatar"];
-				echo "<img src='$image' >";
-			}
-		}
-	}
+		// 	while ($row = $result->fetch_assoc()) {
+		// 		echo $row["first_name"]."<br>";
+		// 		echo $row["email"]."<br>";
+		// 		$image = $row["avatar"];
+		// 		echo "<img src='$image' >";
+		// 	}
+		// }
+	// }
 		?>
 
 
