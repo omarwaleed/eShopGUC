@@ -59,7 +59,7 @@
 		?>
 
 		
-		<div class="header-middle"><!--header-middle-->
+		<div class="header-middle">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
@@ -81,12 +81,12 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/header-middle-->
-	</header><!--/header-->
+		</div>
+	</header>
 					
 				
 				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
+					<div class="features_items">
 						
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">

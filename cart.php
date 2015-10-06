@@ -11,11 +11,11 @@
     
 	<link href="css/cart.css" rel="stylesheet">
  
-</head><!--/head-->
+</head>
 
 <body>
-	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
+	<header id="header"><
+		<div class="header_top">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
@@ -24,9 +24,9 @@
 					
 				</div>
 			</div>
-		</div><!--/header_top-->
+		</div>
 		
-		<div class="header-middle"><!--header-middle-->
+		<div class="header-middle">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
@@ -46,9 +46,9 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/header-middle-->
+		</div>
 	
-		<div class="header-bottom"><!--header-bottom-->
+		<div class="header-bottom">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
@@ -64,8 +64,8 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
+		</div>
+	</header>
 
 	<section id="cart_items">
 		<div class="container">
@@ -114,7 +114,7 @@
 				</table>
 			</div>
 		</div>
-	</section> <!--/#cart_items-->
+	</section> 
 
 	
 
