@@ -58,16 +58,16 @@
 	// }
 
 	// database connecting
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "omar";
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "omar";
 		// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($servername, $username, $password, $dbname);
 		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
 	?>
 
 
@@ -102,7 +102,7 @@
 <div class="col-sm-9 padding-right">
 	<div class="features_items"><!--features_items-->
 
-		<div class="col-sm-4">
+		<!-- <div class="col-sm-4">
 			<div class="product-image-wrapper">
 				<div class="single-products">
 					<div class="productinfo text-center">
@@ -115,7 +115,30 @@
 
 				</div>
 			</div>
-		</div>
+		</div> -->
+
+		<?php 
+		$result = mysqli_query($conn , "SELECT * FROM items");
+		while ($row = $result->fetch_assoc())
+		{
+		?>
+			<div class="col-sm-4">
+				<div class="product-image-wrapper">
+					<div class="single-products">
+						<div class="productinfo text-center">
+							<img src= <?php echo $row["image"] ?> alt="" width="400" height="266" />
+							<h2><?php echo $row["price"] ?></h2>
+							<p><?php echo $row["name"] ?></p>
+							<p><?php echo $row["description"] ?></p>
+							<p><?php echo $row["quantity"] ?> Available</p>
+							<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php 
+		}
+		?>
 
 
 
@@ -124,11 +147,11 @@
 
 
 
-
-		</body>
-
-		</html>
-
-
+		<?php mysqli_close($conn); ?>
 	</body>
+
 	</html>
+
+
+</body>
+</html>
