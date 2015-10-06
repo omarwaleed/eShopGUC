@@ -124,7 +124,7 @@ if (session_status() == PHP_SESSION_NONE)
 	}
 	?>
 
-	<form action="signup.php" method="POST" enctype="multipart/form-data">
+	
 <div class="container">
 <div class="main">
 <form class="form" method="post" action="#">
