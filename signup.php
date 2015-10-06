@@ -10,8 +10,8 @@ if (session_status() == PHP_SESSION_NONE)
 	<title>Sign Up</title>
 	<link rel="stylesheet" href="css/signup.css"/>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/signup.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/signup.js"></script>
 </head>
 <body>
 	<?php 
@@ -95,8 +95,8 @@ if (session_status() == PHP_SESSION_NONE)
 
 					$_SESSION['email'] = $email;
 
-						header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
-						exit();
+					header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+					exit();
 				}
 			}
 			else
@@ -125,25 +125,25 @@ if (session_status() == PHP_SESSION_NONE)
 	?>
 
 	<form action="signup.php" method="POST" enctype="multipart/form-data">
-<div class="container">
-<div class="main">
-<form class="form" method="post" action="#">
-<h2>Sign Up Now</h2>
-<label> First Name :</label>
-<input type="text" name="dname" id="name">
-<label>last Name :</label>
-<input type="text" name="dname" id="name">
-<label>Email :</label>
-<input type="text" name="demail" id="email">
-<label>Password :</label>
-<input type="password" name="password" id="password">
-<label>Confirm Password :</label>
-<input type="password" name="cpassword" id="cpassword">
-<input type="button" name="register" id="register" value="Register">
-</form>
-</div>
-</body>
-</html>
+		<div class="container">
+			<div class="main">
+				<form class="form" method="post" action="#">
+					<h2>Sign Up Now</h2>
+					<label> First Name :</label>
+					<input type="text" name="dname" id="name">
+					<label>last Name :</label>
+					<input type="text" name="dname" id="name">
+					<label>Email :</label>
+					<input type="text" name="demail" id="email">
+					<label>Password :</label>
+					<input type="password" name="password" id="password">
+					<label>Confirm Password :</label>
+					<input type="password" name="cpassword" id="cpassword">
+					<input type="button" name="register" id="register" value="Register">
+				</form>
+			</div>
+		</body>
+		</html>
 	</form>
 </body>
 </html>
