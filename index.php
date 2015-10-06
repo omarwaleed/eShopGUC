@@ -88,7 +88,7 @@
 							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
 							<li><a href="#"><i class="fa fa-star"></i> Signin</a></li>
 							<li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li>
-							<li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
+							<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							<li><a href="Signup.php"><i class="fa fa-lock"></i> Signup</a></li>
 						</ul>
 					</div>
