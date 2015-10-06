@@ -130,16 +130,18 @@ if (session_status() == PHP_SESSION_NONE)
 				<form class="form" method="post" action="#">
 					<h2>Sign Up Now</h2>
 					<label> First Name :</label>
-					<input type="text" name="dname" id="name">
+					<input type="text" name="first_name" id="name">
 					<label>last Name :</label>
-					<input type="text" name="dname" id="name">
+					<input type="text" name="last_name" id="name">
 					<label>Email :</label>
-					<input type="text" name="demail" id="email">
+					<input type="text" name="email" id="email">
+					<label>Avatar :</label>
+					<input type="file" name="avatar" size="200000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26">
 					<label>Password :</label>
-					<input type="password" name="password" id="password">
+					<input type="password" name="pass" id="password">
 					<label>Confirm Password :</label>
-					<input type="password" name="cpassword" id="cpassword">
-					<input type="button" name="register" id="register" value="Register">
+					<input type="password" name="pass2" id="cpassword">
+					<input type="submit" name="register" id="register" value="Register">
 				</form>
 			</div>
 		</body>
