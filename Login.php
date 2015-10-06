@@ -9,6 +9,8 @@
 <script type="text/javascript" src="js/Login.js"></script>
 </head> 
 <body>
+
+
 <?php 
 
 
@@ -74,7 +76,7 @@ if(isset($_POST['submit']))
 <input type="password" name="password" id="password">
 <label>Remember Me:</label>
  <input type="checkbox" name="rememberme" value="1"><br>
-<input type="button" name="Login" id="register" value="Login">
+<input type="button" name="Login" id="Login" value="Login">
 </form>
 </div>
 </body>

@@ -64,11 +64,9 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="img/logo.jpg" alt="" /></a>
+							<a href="index.php"><img src="img/logo.jpg" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							
-						</div>
+	
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
