@@ -123,7 +123,7 @@ if (session_status() == PHP_SESSION_NONE)
 		register();
 	}
 	?>
-
+	
 	<form action="signup.php" method="POST" enctype="multipart/form-data">
 		<div class="container">
 			<div class="main">

@@ -10,19 +10,4 @@ alert("Please fill all fields");
 alert("Password should atleast 8 character in length");
 } else if (!(password).match(cpassword)) {
 alert("password dont match");
-}
-// } else {
-// $.post("signup.php", {
-// name: name,
-// email: email,
-// password: password
-// }, function(data) {
-// if (data == 'You have Successfully Registered') {
-// $("form")[0].reset();
-// }
-// alert(data);
-// });
-// }
-// });
-// });
 } 
