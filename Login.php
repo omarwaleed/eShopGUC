@@ -34,6 +34,7 @@ $query = mysql_query("SELECT * FROM users where email = '$_POST[email]' AND pass
 $row = mysql_fetch_array($query) or die(mysql_error());
 if(!empty($row['email'] )AND !empty($row['password'])) {
 $_SESSION['email'] = $row['email'];
+$_SESSION['id'] = $row['id'];
 
 $user=$row['first_name'];
 if (isset($_POST['rememberme'])) {
