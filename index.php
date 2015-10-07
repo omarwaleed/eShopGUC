@@ -15,10 +15,9 @@
 <body>
 	<?php
 	// check if session has started. if not start it
-	if (session_status() == PHP_SESSION_NONE) 
-	{
-		session_start();
-	}
+	session_start();
+		// $_SESSION['cart']['items'] = array("0");
+		// array_push($_SESSION['cart']['items'], "0");
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -35,6 +34,8 @@
 	?>
 	
 	<?php
+
+
 	// print any alert messages
 	// if (isset($_SESSION['alert'])) 
 	// {
@@ -76,7 +77,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="index.html"><img src="img/logo.jpg" alt="" /></a>
+						<a href="index.php"><img src="img/logo.jpg" alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 
@@ -86,10 +87,10 @@
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
 							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-							<li><a href="#"><i class="fa fa-star"></i> Signin</a></li>
-							<li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li>
-							<li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
-							<li><a href="Signup.php"><i class="fa fa-lock"></i> Signup</a></li>
+							<li><a href="Login.php"><i class="fa fa-star"></i> Signin</a></li>
+							<!-- <li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
+							<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+							<li><a href="signup.php"><i class="fa fa-lock"></i> Signup</a></li>
 						</ul>
 					</div>
 				</div>
@@ -121,7 +122,7 @@
 		$result = mysqli_query($conn , "SELECT * FROM items");
 		while ($row = $result->fetch_assoc())
 		{
-		?>
+			?>
 			<div class="col-sm-4">
 				<div class="product-image-wrapper">
 					<div class="single-products">
@@ -130,13 +131,13 @@
 							<h2><?php echo $row["price"] ?></h2>
 							<p><?php echo $row["name"] ?></p>
 							<p><?php echo $row["description"] ?></p>
-							<p><?php echo $row["quantity"] ?> Available</p>
-							<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+							<p><?php if ($row["quantity"] > 0){echo $row["quantity"];} else{echo "Not";} ?> Available</p>
+							<a href="control.php?item=<?php echo $row["id"] ?>&add=true" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 						</div>
 					</div>
 				</div>
 			</div>
-		<?php 
+			<?php 
 		}
 		?>
 
