@@ -35,7 +35,7 @@
 	// if (isset($_GET['item'])) 
 	// {
 	// 	$_SESSION['cart'][] = $_GET['item'];
-		print_r($_SESSION);
+		// print_r($_SESSION);
 	// 	// unset($_SESSION['item']);
 	// }
 
@@ -103,6 +103,7 @@
 						<td class="image">Item</td>
 						<td class="description">Name</td>
 						<td class="price">Price</td>
+						<h4><a href="control.php?clear=true">Clear Cart</a></h4>
 						<td></td>
 					</tr>
 				</thead>
@@ -113,7 +114,6 @@
 					{
 						// $ids = join(',',$_SESSION["cart"]); 
 						// $result = mysqli_query($conn , "SELECT * FROM items WHERE id IN ($_SESSION(['cart']))");
-						echo  "SELECT * FROM items WHERE id IN (" . implode(',', $_SESSION['cart']) . ")<br>";
 						$result = mysqli_query($conn , "SELECT * FROM items WHERE id IN (" . implode(',', $_SESSION['cart']) . ")");
 						if (!$result) {
 							echo mysqli_error($conn);
@@ -133,9 +133,9 @@
 							<td class="cart_price">
 								<p><?php echo $row["price"]  ?></p>
 							</td>
-							<td class="cart_delete">
-								<h4><a href="control?delete= <?php echo $row['id'] ?>" > Remove </a></h4>
-							</td>
+							<!-- <td class="cart_delete">
+								<h4><a href="control?delete= <?php //echo $row['id'] ?>" > Remove </a></h4>
+							</td> -->
 						</tr>
 
 						<?php 

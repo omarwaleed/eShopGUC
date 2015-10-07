@@ -34,8 +34,10 @@ if (isset($_GET['add']))
 	exit();
 }
 
-if (isset($_GET['delete'])) 
+if (isset($_GET['clear'])) 
 {
-	// unset($_SESSION['cart'][]);
+	unset($_SESSION['cart']);
+	header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
+	exit();
 }
 ?>
