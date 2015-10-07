@@ -120,8 +120,6 @@
 							exit;
 						}
 
-						print_r($result->fetch_assoc());
-
 						while ($row = $result->fetch_assoc())
 							{ ?>
 						<tr>
