@@ -17,7 +17,7 @@
 	<?php 
 
 	session_start();
-	print_r($_SESSION);
+	// print_r($_SESSION);
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -32,12 +32,12 @@
 	} 
 	// echo "Connected successfully";
 
-	if (isset($_GET['item'])) 
-	{
-		$_SESSION['cart'][] = $_GET['item'];
+	// if (isset($_GET['item'])) 
+	// {
+	// 	$_SESSION['cart'][] = $_GET['item'];
 		print_r($_SESSION);
-		// unset($_SESSION['item']);
-	}
+	// 	// unset($_SESSION['item']);
+	// }
 
 	?>
 	<header id="header"><!--header-->
@@ -136,7 +136,7 @@
 								<p><?php echo $row["price"]  ?></p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<h4><a href="control?delete= <?php echo $row['id'] ?>" > Remove </a></h4>
 							</td>
 						</tr>
 

@@ -15,12 +15,27 @@ if (isset($_GET['checkout']))
 		echo "<br>here number ".$new_q;
 		echo "<br>id ".$row['id'];
 									// UPDATE `omar`.`items` SET `quantity` = '8' WHERE `items`.`id` = 4;
-		$query = mysqli_query($conn, "UPDATE items SET quantity = '$new_q' WHERE items.id =". $row['id']);
+		if ($new_q > 0) 
+		{
+			$query = mysqli_query($conn, "UPDATE items SET quantity = '$new_q' WHERE items.id =". $row['id']);
+		}
 	}
 	unset($_SESSION['cart']);
 	// add to purchase history missing
 	header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
 	exit();
 
+}
+
+if (isset($_GET['add'])) 
+{
+	$_SESSION['cart'][] = $_GET['item'];
+	header("Location: http://localhost/eShopGUC/cart.php"); /* Redirect browser */
+	exit();
+}
+
+if (isset($_GET['delete'])) 
+{
+	// unset($_SESSION['cart'][]);
 }
 ?>
