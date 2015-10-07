@@ -1,5 +1,5 @@
 $(document).ready(function() {
-$("#register").click(function() {
+$("#Login").click(function() {
 var name = $("#name").val();
 var email = $("#email").val();
 var password = $("#password").val();
