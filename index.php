@@ -16,6 +16,7 @@
 	<?php
 	// check if session has started. if not start it
 	session_start();
+	print_r($_SESSION);
 		// $_SESSION['cart']['items'] = array("0");
 		// array_push($_SESSION['cart']['items'], "0");
 	$servername = "localhost";
