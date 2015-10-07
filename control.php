@@ -8,12 +8,16 @@ if (isset($_GET['checkout']))
 	$password = "";
 	$dbname = "omar";
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	$result = mysqli_query($conn, "SELECT quantity FROM items WHERE id IN (" . implode(',', $_SESSION['cart']) . ")");
+	$result = mysqli_query($conn, "SELECT * FROM items WHERE id IN (" . implode(',', $_SESSION['cart']) . ")");
 	while ($row = $result->fetch_assoc())
 	{
 		$new_q = intval($row['quantity'])-1;
-		$query = mysqli_query($conn, "UPDATE itesm SET 'quantity'='$new_q' WHERE id = ".$row['id'].")");
+		echo "<br>here number ".$new_q;
+		echo "<br>id ".$row['id'];
+									// UPDATE `omar`.`items` SET `quantity` = '8' WHERE `items`.`id` = 4;
+		$query = mysqli_query($conn, "UPDATE items SET quantity = '$new_q' WHERE items.id =". $row['id']);
 	}
+	unset($_SESSION['cart']);
 	// add to purchase history missing
 	header("Location: http://localhost/eShopGUC/index.php"); /* Redirect browser */
 	exit();
