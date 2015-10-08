@@ -87,11 +87,12 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+							<li><a href="editprofile.php"><i class="fa fa-user"></i> Profile</a></li>
 							<li><a href="Login.php"><i class="fa fa-star"></i> Signin</a></li>
 							<!-- <li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
 							<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							<li><a href="signup.php"><i class="fa fa-lock"></i> Signup</a></li>
+							<li><a href="History.php"><i class="fa fa-lock"></i> History</a></li>
 						</ul>
 					</div>
 				</div>
@@ -150,10 +151,7 @@
 
 
 		<?php mysqli_close($conn); ?>
-	</body>
-
-	</html>
-
+	
 
 </body>
 </html>
