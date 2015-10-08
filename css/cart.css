@@ -1,20 +1,16 @@
 ﻿
-/*************************
-*******Typography******
-**************************/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background:;
+  font-family: monospace;
   position: relative;
   font-weight:400px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+h2 {
+  font-family: monospace;;
 }
 
 
@@ -27,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .shop-menu ul li {
-	display:inline-block;
+  display:inline-block;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -36,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 .shop-menu ul li a {
   background: #FFFFFF;
   color: #696763;
-  font-family: 'Roboto', sans-serif;
+  font-family: monospace;
   font-size: 14px;
   font-weight: 300;
   padding:0;
@@ -46,13 +42,13 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .shop-menu ul li a i{
-	margin-right:3px;
+  margin-right:3px;
 }
 
 
 .shop-menu ul li a:hover {
-	color:#fe980f;
-	background:#fff;
+  color:#fe980f;
+  background:#fff;
 }
 
 
@@ -72,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #FE980F;
   color: #fff;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: monospace;
   font-weight: normal;
 }
 
@@ -143,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   font-size: 16px;
   text-align: center;
-  font-family: 'Roboto',sans-serif;
+  font-family: monospace;
   
 }
 

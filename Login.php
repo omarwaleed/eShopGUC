@@ -64,7 +64,6 @@ if(isset($_POST['submit']))
 
 
 
-
 <div class="container">
 <div class="main">
 <form class="form" method="post" action="#">
@@ -82,5 +81,3 @@ if(isset($_POST['submit']))
 </body>
 </html>
   </form>
-</body> 
-</html>

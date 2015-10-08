@@ -78,7 +78,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="index.php"><img src="img/logo.jpg" alt="" /></a>
+						<a href="index.php"><img src="img/logo.jpg" id='logo' alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 
