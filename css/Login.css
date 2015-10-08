@@ -1,10 +1,16 @@
 
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
- 
+
 body{
-	background-color:#000000;
-       
+	background-color: #000000;
 }
+ 
+
+#image {
+    
+    background: url(bg.jpg);
+}
+
 h2{
 text-align: center;
 font-size: 30px;
@@ -48,7 +54,7 @@ text-shadow: 0 1px 0 #fff;
 font-size: 14px;
 font-weight: bold;
 }
-#Login{
+#register{
 font-size: 20px;
 margin-top: 15px;
 background: #000000;
@@ -61,7 +67,8 @@ width: 100%;
 }
 
 
-#Login:hover{
+#register:hover{
 background: #FF9933;
 }
+
 
