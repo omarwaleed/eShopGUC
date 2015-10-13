@@ -39,7 +39,7 @@ if (isset($_GET['checkout']))
 			echo "<br>here number ".$new_q;
 			echo "<br>id ".$row['id'];
 									// UPDATE `omar`.`items` SET `quantity` = '8' WHERE `items`.`id` = 4;
-			if ($new_q > 0) 
+			if ($new_q > -1) 
 			{
 				mysqli_query($conn, "UPDATE items SET quantity = '$new_q' WHERE items.id =". $row['id']);
 				// $query = mysqli_query($conn, "SELECT * FROM users WHERE email='".$_SESSION['email']."' LIMIT 1" );
