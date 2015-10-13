@@ -16,7 +16,7 @@
 	<?php
 	// check if session has started. if not start it
 	session_start();
-	// print_r($_SESSION);
+	// print_r($_SESSION);
 		// $_SESSION['cart']['items'] = array("0");
 		// array_push($_SESSION['cart']['items'], "0");
 	$servername = "localhost";
@@ -88,17 +88,19 @@
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
 							<li><a href="editprofile.php"><i class="fa fa-user"></i> Profile</a></li>
+							<?php if (!isset($_SESSION['email'])) { ?>
 							<li><a href="Login.php"><i class="fa fa-star"></i> Signin</a></li>
-							<!-- <li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
-							<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							<li><a href="signup.php"><i class="fa fa-lock"></i> Signup</a></li>
 							<li><a href="History.php"><i class="fa fa-lock"></i> History</a></li>
-						</ul>
-					</div>
+						<?php } ?>
+						<!-- <li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
+						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
-	</div><!--/header-middle-->
+	</div>
+</div><!--/header-middle-->
 </header><!--/header-->
 
 
@@ -151,7 +153,7 @@
 
 
 		<?php mysqli_close($conn); ?>
-	
 
-</body>
-</html>
+
+	</body>
+	</html>
